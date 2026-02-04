@@ -3,18 +3,42 @@ kind: Deployment
 metadata:
   name: payment
   namespace: robot-shop
+<<<<<<< HEAD
 spec:
   replicas: 1
   selector:
     matchLabels:
       io.kompose.service: payment
+=======
+  labels:
+    app: payment
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: payment
+>>>>>>> 8a6c13d (Your commit message)
   template:
     metadata:
       labels:
-        io.kompose.service: payment
+        app: payment
     spec:
       containers:
       - name: payment
+<<<<<<< HEAD
         image: payment:latest
         ports:
         - containerPort: 8080
+=======
+        image: linuxacademycontent/rs-payment:latest
+        ports:
+        - containerPort: 8080
+        resources:
+          limits:
+            cpu: "200m"
+            memory: "100Mi"
+          requests:
+            cpu: "100m"
+            memory: "50Mi"
+
+>>>>>>> 8a6c13d (Your commit message)

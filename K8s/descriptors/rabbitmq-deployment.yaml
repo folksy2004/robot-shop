@@ -3,19 +3,43 @@ kind: Deployment
 metadata:
   name: rabbitmq
   namespace: robot-shop
+<<<<<<< HEAD
+=======
+  labels:
+    app: rabbitmq
+>>>>>>> 8a6c13d (Your commit message)
 spec:
   replicas: 1
   selector:
     matchLabels:
+<<<<<<< HEAD
       io.kompose.service: rabbitmq
+=======
+      app: rabbitmq
+>>>>>>> 8a6c13d (Your commit message)
   template:
     metadata:
       labels:
-        io.kompose.service: rabbitmq
+        app: rabbitmq
     spec:
       containers:
       - name: rabbitmq
+<<<<<<< HEAD
         image: rabbitmq:3-management
         ports:
         - containerPort: 5672
         - containerPort: 15672
+=======
+        image: rabbitmq:3.7-management-alpine
+        ports:
+        - containerPort: 5672
+        - containerPort: 15672
+        resources:
+          limits:
+            cpu: "200m"
+            memory: "512Mi"
+          requests:
+            cpu: "100m"
+            memory: "256Mi"
+
+>>>>>>> 8a6c13d (Your commit message)

@@ -3,18 +3,41 @@ kind: Deployment
 metadata:
   name: redis
   namespace: robot-shop
+<<<<<<< HEAD
+=======
+  labels:
+    app: redis
+>>>>>>> 8a6c13d (Your commit message)
 spec:
   replicas: 1
   selector:
     matchLabels:
+<<<<<<< HEAD
       io.kompose.service: redis
+=======
+      app: redis
+>>>>>>> 8a6c13d (Your commit message)
   template:
     metadata:
       labels:
-        io.kompose.service: redis
+        app: redis
     spec:
       containers:
       - name: redis
+<<<<<<< HEAD
         image: redis:latest
         ports:
         - containerPort: 6379
+=======
+        image: redis:4.0.6
+        ports:
+        - containerPort: 6379
+        resources:
+          limits:
+            cpu: "200m"
+            memory: "100Mi"
+          requests:
+            cpu: "100m"
+            memory: "50Mi"
+
+>>>>>>> 8a6c13d (Your commit message)

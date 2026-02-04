@@ -3,18 +3,41 @@ kind: Deployment
 metadata:
   name: shipping
   namespace: robot-shop
+<<<<<<< HEAD
+=======
+  labels:
+    app: shipping
+>>>>>>> 8a6c13d (Your commit message)
 spec:
   replicas: 1
   selector:
     matchLabels:
+<<<<<<< HEAD
       io.kompose.service: shipping
+=======
+      app: shipping
+>>>>>>> 8a6c13d (Your commit message)
   template:
     metadata:
       labels:
-        io.kompose.service: shipping
+        app: shipping
     spec:
       containers:
       - name: shipping
+<<<<<<< HEAD
         image: shipping:latest
         ports:
         - containerPort: 8080
+=======
+        image: linuxacademycontent/rs-shipping:latest
+        ports:
+        - containerPort: 8080
+        resources:
+          limits:
+            cpu: "200m"
+            memory: "100Mi"
+          requests:
+            cpu: "100m"
+            memory: "50Mi"
+
+>>>>>>> 8a6c13d (Your commit message)

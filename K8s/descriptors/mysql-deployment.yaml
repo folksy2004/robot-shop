@@ -3,21 +3,47 @@ kind: Deployment
 metadata:
   name: mysql
   namespace: robot-shop
+<<<<<<< HEAD
+=======
+  labels:
+    app: mysql
+>>>>>>> 8a6c13d (Your commit message)
 spec:
   replicas: 1
   selector:
     matchLabels:
+<<<<<<< HEAD
       io.kompose.service: mysql
+=======
+      app: mysql
+>>>>>>> 8a6c13d (Your commit message)
   template:
     metadata:
       labels:
-        io.kompose.service: mysql
+        app: mysql
     spec:
       containers:
       - name: mysql
+<<<<<<< HEAD
         image: mysql:5.7
         ports:
         - containerPort: 3306
         env:
         - name: MYSQL_ROOT_PASSWORD
           value: rootpassword
+=======
+        image: linuxacademycontent/rs-mysql-db:latest
+        ports:
+        - containerPort: 3306
+        resources:
+          limits:
+            cpu: "200m"
+            memory: "800Mi"
+          requests:
+            cpu: "100m"
+            memory: "400Mi"
+        securityContext:
+          capabilities:
+            add: ["NET_ADMIN"]
+
+>>>>>>> 8a6c13d (Your commit message)

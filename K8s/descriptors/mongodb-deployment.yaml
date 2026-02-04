@@ -3,18 +3,42 @@ kind: Deployment
 metadata:
   name: mongodb
   namespace: robot-shop
+<<<<<<< HEAD
 spec:
   replicas: 1
   selector:
     matchLabels:
       io.kompose.service: mongodb
+=======
+  labels:
+    app: mongodb
+spec:
+  replicas: 3  # <--- increase number of pods
+  selector:
+    matchLabels:
+      app: mongodb
+>>>>>>> 8a6c13d (Your commit message)
   template:
     metadata:
       labels:
-        io.kompose.service: mongodb
+        app: mongodb
     spec:
       containers:
       - name: mongodb
+<<<<<<< HEAD
         image: mongo:latest
         ports:
         - containerPort: 27017
+=======
+        image: linuxacademycontent/rs-mongodb:latest
+        ports:
+        - containerPort: 27017
+        resources:
+          limits:
+            cpu: "200m"
+            memory: "100Mi"
+          requests:
+            cpu: "100m"
+            memory: "50Mi"
+
+>>>>>>> 8a6c13d (Your commit message)

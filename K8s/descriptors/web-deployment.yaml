@@ -7,14 +7,39 @@ spec:
   replicas: 1
   selector:
     matchLabels:
+<<<<<<< HEAD
       io.kompose.service: web
+=======
+      app: web
+>>>>>>> 8a6c13d (Your commit message)
   template:
     metadata:
       labels:
-        io.kompose.service: web
+        app: web
     spec:
+      initContainers:
+      - name: wait-for-services
+        image: busybox:1.36
+        command:
+          - sh
+          - -c
+          - |
+            for svc in catalogue user cart shipping payment ratings; do
+              echo "Waiting for $svc..."
+              until nslookup $svc.robot-shop.svc.cluster.local; do
+                sleep 2
+              done
+            done
+            echo "All backend services are resolvable"
       containers:
       - name: web
+<<<<<<< HEAD
         image: web:latest
         ports:
         - containerPort: 8080
+=======
+        image: robotshop/rs-web:latest
+        ports:
+          - containerPort: 8080
+
+>>>>>>> 8a6c13d (Your commit message)
